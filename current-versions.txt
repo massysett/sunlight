@@ -1,7 +1,7 @@
 This package was tested to work with these dependency
 versions and compiler version.
 These are the default versions fetched by cabal install.
-Tested as of: 2014-02-23 22:42:19.144837 UTC
+Tested as of: 2014-02-23 23:07:11.623243 UTC
 Path to compiler: ghc-7.6
 Compiler description: 7.6
 
@@ -32,9 +32,9 @@ Compiler description: 7.6
     time-1.4.0.1
     unix-2.6.0.1
 
-/home/massysett/sunlight/sunlight-32319/db:
+/home/massysett/sunlight/sunlight-3857/db:
     OneTuple-0.2.1
     random-1.0.1.1
-    sunlight-0.1.0.0
+    sunlight-0.2.0.0
     tuple-0.2.0.1
 

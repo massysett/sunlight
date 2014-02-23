@@ -81,10 +81,14 @@ instance ShowBS CmdResult where
         ExitFailure e -> "FAILED with exit code " <> BS8.pack (show e)
     <> "\n"
     <> "Standard output:\n"
-    <> crStdOut r
+    <> shower (crStdOut r)
     <> "\nStandard error:\n"
-    <> crStdErr r
+    <> shower (crStdErr r)
     <> "\n"
+    where
+      shower bs
+        | BS8.null bs = "<empty>\n"
+        | otherwise = bs
 
 instance ShowBS UTCTime where
   showBS = BS8.pack . show

@@ -1,0 +1,591 @@
+Current time: 2014-02-23 23:07:11.623243 UTC
+ghc-7.4 ["--version"] succeeded with exit code 0
+Standard output:
+The Glorious Glasgow Haskell Compilation System, version 7.4.2
+
+Standard error:
+<empty>
+
+ghc-pkg-7.4 ["--version"] succeeded with exit code 0
+Standard output:
+GHC package manager version 7.4.2
+
+Standard error:
+<empty>
+
+cabal ["--version"] succeeded with exit code 0
+Standard output:
+cabal-install version 1.18.0.2
+using version 1.18.1 of the Cabal library 
+
+Standard error:
+<empty>
+
+ghc-7.4 ["--make","-outputdir","/home/massysett/sunlight/sunlight-3857","-o","/home/massysett/sunlight/sunlight-3857/Setup","Setup.hs"] succeeded with exit code 0
+Standard output:
+[1 of 1] Compiling Main             ( Setup.hs, /home/massysett/sunlight/sunlight-3857/Main.o )
+Linking /home/massysett/sunlight/sunlight-3857/Setup ...
+
+Standard error:
+<empty>
+
+/home/massysett/sunlight/sunlight-3857/Setup ["sdist","--output-directory=/home/massysett/sunlight/sunlight-3857/distDeps"] succeeded with exit code 0
+Standard output:
+Distribution quality warnings:
+When distributing packages it is encouraged to specify source control
+information in the .cabal file using one or more 'source-repository' sections.
+See the Cabal user guide for details.
+Building source dist for sunlight-0.2.0.0...
+Source directory created: /home/massysett/sunlight/sunlight-3857/distDeps
+
+Standard error:
+Warning: Cannot run preprocessors. Run 'configure' command first.
+
+/home/massysett/sunlight/sunlight-3857/Setup ["sdist","--output-directory=/home/massysett/sunlight/sunlight-3857/distPkg"] succeeded with exit code 0
+Standard output:
+Distribution quality warnings:
+When distributing packages it is encouraged to specify source control
+information in the .cabal file using one or more 'source-repository' sections.
+See the Cabal user guide for details.
+Building source dist for sunlight-0.2.0.0...
+Source directory created: /home/massysett/sunlight/sunlight-3857/distPkg
+
+Standard error:
+Warning: Cannot run preprocessors. Run 'configure' command first.
+
+ghc-pkg-7.4 ["init","/home/massysett/sunlight/sunlight-3857/db"] succeeded with exit code 0
+Standard output:
+<empty>
+
+Standard error:
+<empty>
+
+cabal ["install","--verbose=2","--with-compiler=ghc-7.4","--with-hc-pkg=ghc-pkg-7.4","--prefix=/home/massysett/sunlight/sunlight-3857/prefix","--disable-library-profiling","--disable-executable-profiling","--package-db=clear","--package-db=global","--package-db=/home/massysett/sunlight/sunlight-3857/db","--enable-tests","--disable-documentation","--only-dependencies","--constraint=base==4.5.1.0","--constraint=directory==1.1.0.2","--constraint=bytestring==0.9.2.1","--constraint=Cabal==1.14.0","--constraint=process==1.1.0.1","--constraint=tuple==0.2.0.1","--constraint=time==1.4","--constraint=old-locale==1.0.0.4","--constraint=random==1.0.0.0"] succeeded with exit code 0
+Standard output:
+Reading available packages...
+Choosing modular solver.
+Resolving dependencies...
+Ready to install OneTuple-0.2.1
+Ready to install random-1.0.0.0
+Waiting for install task to finish...
+Extracting
+/home/massysett/.cabal/packages/hackage.haskell.org/OneTuple/0.2.1/OneTuple-0.2.1.tar.gz
+to /tmp/OneTuple-0.2.1-3889...
+Updating OneTuple.cabal with the latest revision from the index.
+Configuring OneTuple-0.2.1...
+Dependency base ==4.5.1.0: using base-4.5.1.0
+'/usr/local/bin/ghc-7.4' '--info'
+Using Cabal-1.18.1 compiled by ghc-7.6
+Using compiler: ghc-7.4.2
+Using install prefix: /home/massysett/sunlight/sunlight-3857/prefix
+Binaries installed in: /home/massysett/sunlight/sunlight-3857/prefix/bin
+Libraries installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+Private binaries installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/libexec
+Data files installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/share/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+Documentation installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+Configuration files installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/etc
+Using alex found on system at: /home/massysett/.cabal/bin/alex
+Using ar found on system at: /usr/bin/ar
+No c2hs found
+Using cpphs found on system at: /home/massysett/.cabal/bin/cpphs
+No ffihugs found
+Using gcc version 4.7 found on system at: /usr/bin/gcc
+Using ghc version 7.4.2 given by user at: /usr/local/bin/ghc-7.4
+Using ghc-pkg version 7.4.2 given by user at: /usr/local/bin/ghc-pkg-7.4
+No greencard found
+Using haddock version 2.13.2 found on system at: /usr/local/bin/haddock
+Using happy version 1.19.3 found on system at:
+/home/massysett/.cabal/bin/happy
+No hmake found
+No hpc found
+No hsc2hs found
+Using hscolour version 1.20 found on system at:
+/home/massysett/.cabal/bin/HsColour
+No hugs found
+No jhc found
+Using ld found on system at: /usr/bin/ld
+No lhc found
+No lhc-pkg found
+No nhc98 found
+Using pkg-config version 0.26 found on system at: /usr/bin/pkg-config
+Using ranlib found on system at: /usr/bin/ranlib
+Using strip found on system at: /usr/bin/strip
+Using tar found on system at: /bin/tar
+No uhc found
+Component build order: library
+creating dist/build
+creating dist/build/autogen
+Building OneTuple-0.2.1...
+Preprocessing library OneTuple-0.2.1...
+Building library...
+'/usr/local/bin/ghc-7.4' '--info'
+'/usr/local/bin/ghc-7.4' '--info'
+creating dist/build
+/usr/local/bin/ghc-7.4 --make -fbuilding-cabal-package -O -outputdir dist/build -odir dist/build -hidir dist/build -stubdir dist/build -i -idist/build -i. -idist/build/autogen -Idist/build/autogen -Idist/build -optP-include -optPdist/build/autogen/cabal_macros.h -package-name OneTuple-0.2.1 -hide-all-packages -no-user-package-conf -package-conf /home/massysett/sunlight/sunlight-3857/db -package-conf dist/package.conf.inplace -package-id base-4.5.1.0-6e4c9bdc36eeb9121f27ccbbcb62e3f3 -XHaskell98 Data.Tuple.OneTuple
+[1 of 1] Compiling Data.Tuple.OneTuple ( Data/Tuple/OneTuple.hs, dist/build/Data/Tuple/OneTuple.o )
+Linking...
+/usr/bin/ar -r dist/build/libHSOneTuple-0.2.1.a dist/build/Data/Tuple/OneTuple.o
+In-place registering OneTuple-0.2.1...
+'/usr/local/bin/ghc-pkg-7.4' 'update' '-' '--global' '--no-user-package-conf' '--package-conf=/home/massysett/sunlight/sunlight-3857/db' '--package-conf=dist/package.conf.inplace'
+directory dist/doc/html/OneTuple does exist: False
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2
+creating /home/massysett/sunlight/sunlight-3857/prefix/share/doc
+creating /home/massysett/sunlight/sunlight-3857/prefix/share
+creating /home/massysett/sunlight/sunlight-3857/prefix/share/doc
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+Installing LICENSE to
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1/LICENSE
+Installing library in
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1/Data/Tuple
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1/Data
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2
+creating /home/massysett/sunlight/sunlight-3857/prefix/lib
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1/Data
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1/Data/Tuple
+Installing dist/build/Data/Tuple/OneTuple.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1/Data/Tuple/OneTuple.hi
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1
+Installing dist/build/libHSOneTuple-0.2.1.a to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/OneTuple-0.2.1/libHSOneTuple-0.2.1.a
+'/usr/local/bin/ghc-7.4' '--abi-hash' '-fbuilding-cabal-package' '-O' '-outputdir' 'dist/build' '-odir' 'dist/build' '-hidir' 'dist/build' '-stubdir' 'dist/build' '-i' '-idist/build' '-i.' '-idist/build/autogen' '-Idist/build/autogen' '-Idist/build' '-optP-include' '-optPdist/build/autogen/cabal_macros.h' '-package-name' 'OneTuple-0.2.1' '-hide-all-packages' '-no-user-package-conf' '-package-conf' '/home/massysett/sunlight/sunlight-3857/db' '-package-id' 'base-4.5.1.0-6e4c9bdc36eeb9121f27ccbbcb62e3f3' '-XHaskell98' 'Data.Tuple.OneTuple'
+Registering OneTuple-0.2.1...
+'/usr/local/bin/ghc-pkg-7.4' 'update' '-' '--global' '--no-user-package-conf' '--package-conf=/home/massysett/sunlight/sunlight-3857/db'
+Installed OneTuple-0.2.1
+Ready to install tuple-0.2.0.1
+Waiting for install task to finish...
+Extracting
+/home/massysett/.cabal/packages/hackage.haskell.org/random/1.0.0.0/random-1.0.0.0.tar.gz
+to /tmp/random-1.0.0.0-3889...
+Updating random.cabal with the latest revision from the index.
+Configuring random-1.0.0.0...
+Dependency base ==4.5.1.0: using base-4.5.1.0
+Dependency old-time ==1.1.0.0: using old-time-1.1.0.0
+'/usr/local/bin/ghc-7.4' '--info'
+Using Cabal-1.18.1 compiled by ghc-7.6
+Using compiler: ghc-7.4.2
+Using install prefix: /home/massysett/sunlight/sunlight-3857/prefix
+Binaries installed in: /home/massysett/sunlight/sunlight-3857/prefix/bin
+Libraries installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/random-1.0.0.0
+Private binaries installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/libexec
+Data files installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/share/x86_64-linux-ghc-7.4.2/random-1.0.0.0
+Documentation installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2/random-1.0.0.0
+Configuration files installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/etc
+Using alex found on system at: /home/massysett/.cabal/bin/alex
+Using ar found on system at: /usr/bin/ar
+No c2hs found
+Using cpphs found on system at: /home/massysett/.cabal/bin/cpphs
+No ffihugs found
+Using gcc version 4.7 found on system at: /usr/bin/gcc
+Using ghc version 7.4.2 given by user at: /usr/local/bin/ghc-7.4
+Using ghc-pkg version 7.4.2 given by user at: /usr/local/bin/ghc-pkg-7.4
+No greencard found
+Using haddock version 2.13.2 found on system at: /usr/local/bin/haddock
+Using happy version 1.19.3 found on system at:
+/home/massysett/.cabal/bin/happy
+No hmake found
+No hpc found
+No hsc2hs found
+Using hscolour version 1.20 found on system at:
+/home/massysett/.cabal/bin/HsColour
+No hugs found
+No jhc found
+Using ld found on system at: /usr/bin/ld
+No lhc found
+No lhc-pkg found
+No nhc98 found
+Using pkg-config version 0.26 found on system at: /usr/bin/pkg-config
+Using ranlib found on system at: /usr/bin/ranlib
+Using strip found on system at: /usr/bin/strip
+Using tar found on system at: /bin/tar
+No uhc found
+Component build order: library
+creating dist/build
+creating dist/build/autogen
+Building random-1.0.0.0...
+Preprocessing library random-1.0.0.0...
+Building library...
+'/usr/local/bin/ghc-7.4' '--info'
+'/usr/local/bin/ghc-7.4' '--info'
+creating dist/build
+/usr/local/bin/ghc-7.4 --make -fbuilding-cabal-package -O -outputdir dist/build -odir dist/build -hidir dist/build -stubdir dist/build -i -idist/build -i. -idist/build/autogen -Idist/build/autogen -Idist/build -optP-include -optPdist/build/autogen/cabal_macros.h -package-name random-1.0.0.0 -hide-all-packages -no-user-package-conf -package-conf /home/massysett/sunlight/sunlight-3857/db -package-conf dist/package.conf.inplace -package-id base-4.5.1.0-6e4c9bdc36eeb9121f27ccbbcb62e3f3 -package-id old-time-1.1.0.0-703543375fafbcbe67bc51a758e84f10 -XHaskell98 -XCPP System.Random
+[1 of 1] Compiling System.Random    ( System/Random.hs, dist/build/System/Random.o )
+Linking...
+/usr/bin/ar -r dist/build/libHSrandom-1.0.0.0.a dist/build/System/Random.o
+In-place registering random-1.0.0.0...
+'/usr/local/bin/ghc-pkg-7.4' 'update' '-' '--global' '--no-user-package-conf' '--package-conf=/home/massysett/sunlight/sunlight-3857/db' '--package-conf=dist/package.conf.inplace'
+directory dist/doc/html/random does exist: False
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2/random-1.0.0.0
+Installing LICENSE to
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2/random-1.0.0.0/LICENSE
+Installing library in
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/random-1.0.0.0
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/random-1.0.0.0/System
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/random-1.0.0.0
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/random-1.0.0.0/System
+Installing dist/build/System/Random.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/random-1.0.0.0/System/Random.hi
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/random-1.0.0.0
+Installing dist/build/libHSrandom-1.0.0.0.a to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/random-1.0.0.0/libHSrandom-1.0.0.0.a
+'/usr/local/bin/ghc-7.4' '--abi-hash' '-fbuilding-cabal-package' '-O' '-outputdir' 'dist/build' '-odir' 'dist/build' '-hidir' 'dist/build' '-stubdir' 'dist/build' '-i' '-idist/build' '-i.' '-idist/build/autogen' '-Idist/build/autogen' '-Idist/build' '-optP-include' '-optPdist/build/autogen/cabal_macros.h' '-package-name' 'random-1.0.0.0' '-hide-all-packages' '-no-user-package-conf' '-package-conf' '/home/massysett/sunlight/sunlight-3857/db' '-package-id' 'base-4.5.1.0-6e4c9bdc36eeb9121f27ccbbcb62e3f3' '-package-id' 'old-time-1.1.0.0-703543375fafbcbe67bc51a758e84f10' '-XHaskell98' '-XCPP' 'System.Random'
+Registering random-1.0.0.0...
+'/usr/local/bin/ghc-pkg-7.4' 'update' '-' '--global' '--no-user-package-conf' '--package-conf=/home/massysett/sunlight/sunlight-3857/db'
+Installed random-1.0.0.0
+Waiting for install task to finish...
+Extracting
+/home/massysett/.cabal/packages/hackage.haskell.org/tuple/0.2.0.1/tuple-0.2.0.1.tar.gz
+to /tmp/tuple-0.2.0.1-3889...
+Updating tuple.cabal with the latest revision from the index.
+Configuring tuple-0.2.0.1...
+Dependency OneTuple ==0.2.1: using OneTuple-0.2.1
+Dependency base ==4.5.1.0: using base-4.5.1.0
+'/usr/local/bin/ghc-7.4' '--info'
+Using Cabal-1.18.1 compiled by ghc-7.6
+Using compiler: ghc-7.4.2
+Using install prefix: /home/massysett/sunlight/sunlight-3857/prefix
+Binaries installed in: /home/massysett/sunlight/sunlight-3857/prefix/bin
+Libraries installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1
+Private binaries installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/libexec
+Data files installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/share/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1
+Documentation installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1
+Configuration files installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/etc
+Using alex found on system at: /home/massysett/.cabal/bin/alex
+Using ar found on system at: /usr/bin/ar
+No c2hs found
+Using cpphs found on system at: /home/massysett/.cabal/bin/cpphs
+No ffihugs found
+Using gcc version 4.7 found on system at: /usr/bin/gcc
+Using ghc version 7.4.2 given by user at: /usr/local/bin/ghc-7.4
+Using ghc-pkg version 7.4.2 given by user at: /usr/local/bin/ghc-pkg-7.4
+No greencard found
+Using haddock version 2.13.2 found on system at: /usr/local/bin/haddock
+Using happy version 1.19.3 found on system at:
+/home/massysett/.cabal/bin/happy
+No hmake found
+No hpc found
+No hsc2hs found
+Using hscolour version 1.20 found on system at:
+/home/massysett/.cabal/bin/HsColour
+No hugs found
+No jhc found
+Using ld found on system at: /usr/bin/ld
+No lhc found
+No lhc-pkg found
+No nhc98 found
+Using pkg-config version 0.26 found on system at: /usr/bin/pkg-config
+Using ranlib found on system at: /usr/bin/ranlib
+Using strip found on system at: /usr/bin/strip
+Using tar found on system at: /bin/tar
+No uhc found
+Component build order: library
+creating dist/build
+creating dist/build/autogen
+Building tuple-0.2.0.1...
+Preprocessing library tuple-0.2.0.1...
+Building library...
+'/usr/local/bin/ghc-7.4' '--info'
+'/usr/local/bin/ghc-7.4' '--info'
+creating dist/build
+/usr/local/bin/ghc-7.4 --make -fbuilding-cabal-package -O -outputdir dist/build -odir dist/build -hidir dist/build -stubdir dist/build -i -idist/build -isrc -idist/build/autogen -Idist/build/autogen -Idist/build -optP-include -optPdist/build/autogen/cabal_macros.h -package-name tuple-0.2.0.1 -hide-all-packages -no-user-package-conf -package-conf /home/massysett/sunlight/sunlight-3857/db -package-conf dist/package.conf.inplace -package-id OneTuple-0.2.1-03d1a88be2e6570b3916659ab4e903c6 -package-id base-4.5.1.0-6e4c9bdc36eeb9121f27ccbbcb62e3f3 -XHaskell98 Data.Tuple.All Data.Tuple.Curry Data.Tuple.Select Data.Tuple.Sequence Data.Tuple.Update
+[1 of 5] Compiling Data.Tuple.Update ( src/Data/Tuple/Update.hs, dist/build/Data/Tuple/Update.o )
+[2 of 5] Compiling Data.Tuple.Sequence ( src/Data/Tuple/Sequence.hs, dist/build/Data/Tuple/Sequence.o )
+[3 of 5] Compiling Data.Tuple.Select ( src/Data/Tuple/Select.hs, dist/build/Data/Tuple/Select.o )
+[4 of 5] Compiling Data.Tuple.Curry ( src/Data/Tuple/Curry.hs, dist/build/Data/Tuple/Curry.o )
+[5 of 5] Compiling Data.Tuple.All   ( src/Data/Tuple/All.hs, dist/build/Data/Tuple/All.o )
+Linking...
+/usr/bin/ar -r dist/build/libHStuple-0.2.0.1.a dist/build/Data/Tuple/All.o dist/build/Data/Tuple/Curry.o dist/build/Data/Tuple/Select.o dist/build/Data/Tuple/Sequence.o dist/build/Data/Tuple/Update.o
+In-place registering tuple-0.2.0.1...
+'/usr/local/bin/ghc-pkg-7.4' 'update' '-' '--global' '--no-user-package-conf' '--package-conf=/home/massysett/sunlight/sunlight-3857/db' '--package-conf=dist/package.conf.inplace'
+directory dist/doc/html/tuple does exist: False
+Installing library in
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data/Tuple
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data/Tuple
+Installing dist/build/Data/Tuple/All.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data/Tuple/All.hi
+Installing dist/build/Data/Tuple/Curry.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data/Tuple/Curry.hi
+Installing dist/build/Data/Tuple/Select.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data/Tuple/Select.hi
+Installing dist/build/Data/Tuple/Sequence.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data/Tuple/Sequence.hi
+Installing dist/build/Data/Tuple/Update.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/Data/Tuple/Update.hi
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1
+Installing dist/build/libHStuple-0.2.0.1.a to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/x86_64-linux-ghc-7.4.2/tuple-0.2.0.1/libHStuple-0.2.0.1.a
+'/usr/local/bin/ghc-7.4' '--abi-hash' '-fbuilding-cabal-package' '-O' '-outputdir' 'dist/build' '-odir' 'dist/build' '-hidir' 'dist/build' '-stubdir' 'dist/build' '-i' '-idist/build' '-isrc' '-idist/build/autogen' '-Idist/build/autogen' '-Idist/build' '-optP-include' '-optPdist/build/autogen/cabal_macros.h' '-package-name' 'tuple-0.2.0.1' '-hide-all-packages' '-no-user-package-conf' '-package-conf' '/home/massysett/sunlight/sunlight-3857/db' '-package-id' 'OneTuple-0.2.1-03d1a88be2e6570b3916659ab4e903c6' '-package-id' 'base-4.5.1.0-6e4c9bdc36eeb9121f27ccbbcb62e3f3' '-XHaskell98' 'Data.Tuple.All' 'Data.Tuple.Curry' 'Data.Tuple.Select' 'Data.Tuple.Sequence' 'Data.Tuple.Update'
+Registering tuple-0.2.0.1...
+'/usr/local/bin/ghc-pkg-7.4' 'update' '-' '--global' '--no-user-package-conf' '--package-conf=/home/massysett/sunlight/sunlight-3857/db'
+Installed tuple-0.2.0.1
+
+Standard error:
+Warning: cannot determine version of /home/massysett/.cabal/bin/alex :
+""
+Warning: cannot determine version of /home/massysett/.cabal/bin/cpphs :
+""
+/usr/bin/ar: creating dist/build/libHSOneTuple-0.2.1.a
+Warning: cannot determine version of /home/massysett/.cabal/bin/alex :
+""
+Warning: cannot determine version of /home/massysett/.cabal/bin/cpphs :
+""
+/usr/bin/ar: creating dist/build/libHSrandom-1.0.0.0.a
+Warning: cannot determine version of /home/massysett/.cabal/bin/alex :
+""
+Warning: cannot determine version of /home/massysett/.cabal/bin/cpphs :
+""
+/usr/bin/ar: creating dist/build/libHStuple-0.2.0.1.a
+
+ghc-pkg-7.4 ["list","--global","--package-conf=/home/massysett/sunlight/sunlight-3857/db"] succeeded with exit code 0
+Standard output:
+/opt/ghc-7.4.2/lib/ghc-7.4.2/package.conf.d:
+    Cabal-1.14.0
+    array-0.4.0.0
+    base-4.5.1.0
+    bin-package-db-0.0.0.0
+    binary-0.5.1.0
+    bytestring-0.9.2.1
+    containers-0.4.2.1
+    deepseq-1.3.0.0
+    directory-1.1.0.2
+    extensible-exceptions-0.1.1.4
+    filepath-1.3.0.0
+    (ghc-7.4.2)
+    ghc-prim-0.2.0.0
+    (haskell2010-1.1.0.1)
+    (haskell98-2.0.0.1)
+    hoopl-3.8.7.3
+    hpc-0.5.1.1
+    integer-gmp-0.4.0.0
+    old-locale-1.0.0.4
+    old-time-1.1.0.0
+    pretty-1.1.1.0
+    process-1.1.0.1
+    rts-1.0
+    template-haskell-2.7.0.0
+    time-1.4
+    unix-2.5.1.1
+
+/home/massysett/sunlight/sunlight-3857/db:
+    OneTuple-0.2.1
+    random-1.0.0.0
+    tuple-0.2.0.1
+
+
+Standard error:
+<empty>
+
+ghc ["--make","Setup.hs"] succeeded with exit code 0
+Standard output:
+[1 of 1] Compiling Main             ( Setup.hs, Setup.o )
+Linking Setup ...
+
+Standard error:
+<empty>
+
+./Setup ["configure","--verbose=2","--with-compiler=ghc-7.4","--with-hc-pkg=ghc-pkg-7.4","--prefix=/home/massysett/sunlight/sunlight-3857/prefix","--package-db=clear","--package-db=global","--package-db=/home/massysett/sunlight/sunlight-3857/db","--enable-tests"] succeeded with exit code 0
+Standard output:
+Configuring sunlight-0.2.0.0...
+Dependency Cabal >=1.14.0: using Cabal-1.14.0
+Dependency base >=4.5.1.0: using base-4.5.1.0
+Dependency bytestring >=0.9.2.1: using bytestring-0.9.2.1
+Dependency directory >=1.1.0.2: using directory-1.1.0.2
+Dependency old-locale >=1.0.0.4: using old-locale-1.0.0.4
+Dependency process >=1.1.0.1: using process-1.1.0.1
+Dependency random >=1.0.0.0: using random-1.0.0.0
+Dependency time >=1.4: using time-1.4
+Dependency tuple >=0.2.0.1: using tuple-0.2.0.1
+Using Cabal-1.16.0 compiled by ghc-7.6
+Using compiler: ghc-7.4.2
+Using install prefix: /home/massysett/sunlight/sunlight-3857/prefix
+Binaries installed in: /home/massysett/sunlight/sunlight-3857/prefix/bin
+Libraries installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2
+Private binaries installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/libexec
+Data files installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/share/sunlight-0.2.0.0
+Documentation installed in:
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/sunlight-0.2.0.0
+Using alex found on system at: /home/massysett/.cabal/bin/alex
+Using ar found on system at: /usr/bin/ar
+No c2hs found
+Using cpphs found on system at: /home/massysett/.cabal/bin/cpphs
+No ffihugs found
+Using gcc version 4.7 found on system at: /usr/bin/gcc
+Using ghc version 7.4.2 given by user at: /usr/local/bin/ghc-7.4
+Using ghc-pkg version 7.4.2 given by user at: /usr/local/bin/ghc-pkg-7.4
+No greencard found
+Using haddock version 2.13.2 found on system at: /usr/local/bin/haddock
+Using happy version 1.19.3 found on system at:
+/home/massysett/.cabal/bin/happy
+No hmake found
+No hpc found
+No hsc2hs found
+Using hscolour version 1.20 found on system at:
+/home/massysett/.cabal/bin/HsColour
+No hugs found
+No jhc found
+Using ld found on system at: /usr/bin/ld
+No lhc found
+No lhc-pkg found
+No nhc98 found
+Using pkg-config version 0.26 found on system at: /usr/bin/pkg-config
+Using ranlib found on system at: /usr/bin/ranlib
+Using strip found on system at: /usr/bin/strip
+Using tar found on system at: /bin/tar
+No uhc found
+
+Standard error:
+Warning: cannot determine version of /home/massysett/.cabal/bin/alex :
+""
+Warning: cannot determine version of /home/massysett/.cabal/bin/cpphs :
+""
+
+./Setup ["build","--verbose=2"] succeeded with exit code 0
+Standard output:
+creating dist/build
+creating dist/build/autogen
+Building sunlight-0.2.0.0...
+Preprocessing library sunlight-0.2.0.0...
+Building library...
+creating dist/build
+/usr/local/bin/ghc-7.4 --make -fbuilding-cabal-package -O -odir dist/build -hidir dist/build -stubdir dist/build -i -idist/build -ilib -idist/build/autogen -Idist/build/autogen -Idist/build -optP-include -optPdist/build/autogen/cabal_macros.h -package-name sunlight-0.2.0.0 -hide-all-packages -no-user-package-conf -package-conf /home/massysett/sunlight/sunlight-3857/db -package-conf dist/package.conf.inplace -package-id Cabal-1.14.0-51811b23f395f857b28bbf455939de5e -package-id base-4.5.1.0-6e4c9bdc36eeb9121f27ccbbcb62e3f3 -package-id bytestring-0.9.2.1-503e91bb155301fdb1956cb5c26ce6e9 -package-id directory-1.1.0.2-c30059d750d04b32316f9eeced589f8a -package-id old-locale-1.0.0.4-5e45cabd3b4fdcad9e353ea3845f5ef7 -package-id process-1.1.0.1-608c248c1528f46eb960a08cead77291 -package-id random-1.0.0.0-d455c0de7a544c2930a8137c422f898c -package-id time-1.4-d61e2caaa0486655b4e141dc277ed49f -package-id tuple-0.2.0.1-628cdb30992620da61b8c6df56aca340 -XHaskell2010 Test.Sunlight Test.Sunlight.Shell -Wall
+[1 of 2] Compiling Test.Sunlight.Shell ( lib/Test/Sunlight/Shell.hs, dist/build/Test/Sunlight/Shell.o )
+[2 of 2] Compiling Test.Sunlight    ( lib/Test/Sunlight.hs, dist/build/Test/Sunlight.o )
+Linking...
+/usr/bin/ar -r dist/build/libHSsunlight-0.2.0.0.a dist/build/Test/Sunlight.o dist/build/Test/Sunlight/Shell.o
+/usr/bin/ld -x --hash-size=31 --reduce-memory-overheads -r -o dist/build/HSsunlight-0.2.0.0.o dist/build/Test/Sunlight.o dist/build/Test/Sunlight/Shell.o
+In-place registering sunlight-0.2.0.0...
+/usr/local/bin/ghc-pkg-7.4 update - --global --no-user-package-conf --package-conf=/home/massysett/sunlight/sunlight-3857/db --package-conf=dist/package.conf.inplace
+
+Standard error:
+/usr/bin/ar: creating dist/build/libHSsunlight-0.2.0.0.a
+
+./Setup ["install","--verbose=2"] succeeded with exit code 0
+Standard output:
+directory dist/doc/html/sunlight does exist: False
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/sunlight-0.2.0.0
+Installing LICENSE to
+/home/massysett/sunlight/sunlight-3857/prefix/share/doc/sunlight-0.2.0.0/LICENSE
+Installing library in
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2/Test
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2
+creating /home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2/Test
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2/Test/Sunlight
+Installing dist/build/Test/Sunlight.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2/Test/Sunlight.hi
+Installing dist/build/Test/Sunlight/Shell.hi to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2/Test/Sunlight/Shell.hi
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2
+Installing dist/build/libHSsunlight-0.2.0.0.a to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2/libHSsunlight-0.2.0.0.a
+creating
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2
+Installing dist/build/HSsunlight-0.2.0.0.o to
+/home/massysett/sunlight/sunlight-3857/prefix/lib/sunlight-0.2.0.0/ghc-7.4.2/HSsunlight-0.2.0.0.o
+/usr/local/bin/ghc-7.4 --abi-hash -fbuilding-cabal-package -O -odir dist/build -hidir dist/build -stubdir dist/build -i -idist/build -ilib -idist/build/autogen -Idist/build/autogen -Idist/build -optP-include -optPdist/build/autogen/cabal_macros.h -package-name sunlight-0.2.0.0 -hide-all-packages -no-user-package-conf -package-conf /home/massysett/sunlight/sunlight-3857/db -package-id Cabal-1.14.0-51811b23f395f857b28bbf455939de5e -package-id base-4.5.1.0-6e4c9bdc36eeb9121f27ccbbcb62e3f3 -package-id bytestring-0.9.2.1-503e91bb155301fdb1956cb5c26ce6e9 -package-id directory-1.1.0.2-c30059d750d04b32316f9eeced589f8a -package-id old-locale-1.0.0.4-5e45cabd3b4fdcad9e353ea3845f5ef7 -package-id process-1.1.0.1-608c248c1528f46eb960a08cead77291 -package-id random-1.0.0.0-d455c0de7a544c2930a8137c422f898c -package-id time-1.4-d61e2caaa0486655b4e141dc277ed49f -package-id tuple-0.2.0.1-628cdb30992620da61b8c6df56aca340 -XHaskell2010 Test.Sunlight Test.Sunlight.Shell -Wall
+Registering sunlight-0.2.0.0...
+/usr/local/bin/ghc-pkg-7.4 update - --global --no-user-package-conf --package-conf=/home/massysett/sunlight/sunlight-3857/db
+
+Standard error:
+<empty>
+
+ghc-pkg-7.4 ["list","--global","--package-conf=/home/massysett/sunlight/sunlight-3857/db"] succeeded with exit code 0
+Standard output:
+/opt/ghc-7.4.2/lib/ghc-7.4.2/package.conf.d:
+    Cabal-1.14.0
+    array-0.4.0.0
+    base-4.5.1.0
+    bin-package-db-0.0.0.0
+    binary-0.5.1.0
+    bytestring-0.9.2.1
+    containers-0.4.2.1
+    deepseq-1.3.0.0
+    directory-1.1.0.2
+    extensible-exceptions-0.1.1.4
+    filepath-1.3.0.0
+    (ghc-7.4.2)
+    ghc-prim-0.2.0.0
+    (haskell2010-1.1.0.1)
+    (haskell98-2.0.0.1)
+    hoopl-3.8.7.3
+    hpc-0.5.1.1
+    integer-gmp-0.4.0.0
+    old-locale-1.0.0.4
+    old-time-1.1.0.0
+    pretty-1.1.1.0
+    process-1.1.0.1
+    rts-1.0
+    template-haskell-2.7.0.0
+    time-1.4
+    unix-2.5.1.1
+
+/home/massysett/sunlight/sunlight-3857/db:
+    OneTuple-0.2.1
+    random-1.0.0.0
+    sunlight-0.2.0.0
+    tuple-0.2.0.1
+
+
+Standard error:
+<empty>
+

@@ -2,15 +2,21 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                sunlight
-version:             0.1.0.0
+version:             0.2.0.0
 synopsis:            Test Cabalized package against multiple dependency versions
 
 description:         
   sunlight checks your Cabalized package and ensures that it actually
   builds and passes its tests, even against mulitple dependency
   versions specified in your Cabal file.  For example, your Cabal file
-  might say that your package builds against base-4.4 and base-4.5.  With
+  might say that your package builds against base-4.5.1.0
+  and base-4.6.0.1.  With
   sunlight you can automatically verify that this is actually the case.
+  .
+  For more information, please see
+  .
+  <http://www.github.com/massysett/sunlight>
+
 homepage:            http://www.github.com/massysett/sunlight
 license:             BSD3
 license-file:        LICENSE
@@ -20,6 +26,11 @@ stability:           experimental
 category:            Testing
 build-type:          Simple
 cabal-version:       >=1.10
+extra-source-files: sunlight-test.hs, README.md
+source-repository head
+  type: git
+  location: https://github.com/massysett/sunlight.git
+  
 
 library
   exposed-modules:

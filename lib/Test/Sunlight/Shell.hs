@@ -24,7 +24,8 @@ inDirectory inside a = bracket get rel run
   where
     get = do
       d <- getCurrentDirectory
-      putStrLn $ "changing to directory: " ++ d
+      putStrLn $ "current directory is: " ++ d
+      putStrLn $ "changing to directory: " ++ inside
       setCurrentDirectory inside
       return d
     rel d = do

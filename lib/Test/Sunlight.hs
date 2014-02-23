@@ -73,7 +73,7 @@ installDeps cs ghc pkg cabal db dir = do
         , "--only-dependencies"
         ] ++ map constraint cs
   out <- tee cabal opts
-  let pkgOpts = [ "list", "--global", "--package-db=" ++ db ]
+  let pkgOpts = [ "list", "--global", "--package-conf=" ++ db ]
   pkgOut <- tee pkg pkgOpts
   return $ InstallResult out pkgOut
 
@@ -139,7 +139,7 @@ installPackage ghc pkg db pfx = do
   rPkg <- tee pkg
     [ "list"
     , "--global"
-    , "--package-db=" ++ db
+    , "--package-conf=" ++ db
     ]
   return $ PackageInstResult rBuildSetup rConf rBuild rInst rPkg
 
@@ -213,28 +213,28 @@ installAndTest
   -- ^ How to test the package
   -> IO InstallAndTestResult
 installAndTest cs date ghc pkg cabal test =
-  withTempDirectory verbose "." "sunlight" $ \dir -> do
+  withTempDirectory verbose "." "sunlight" $ \relDir -> do
+    dir <- canonicalizePath relDir
     let setup = dir ++ "/Setup"
         distDeps = dir ++ "/distDeps"
         distPkg = dir ++ "/distPkg"
         db = dir ++ "/db"
         pfx = dir ++ "/prefix"
-        above = ("../" ++)
     ghcVer <- tee ghc ["--version"]
     pkgVer <- tee pkg ["--version"]
     cblVer <- tee "cabal" ["--version"]
-    rSetup <- tee ghc ["--make", "-o", setup]
+    rSetup <- tee ghc ["--make", "-outputdir", dir,
+      "-o", setup, "Setup.hs"]
     rDistDeps <- tee setup
       ["sdist", "--output-directory=" ++ distDeps ]
     rDistPkg <- tee setup
       ["sdist", "--output-directory=" ++ distPkg ]
-    createDirectory db
     createDirectory pfx
     rInit <- tee pkg ["init", db]
     rDeps <- inDirectory distDeps $
-      installDeps cs ghc pkg cabal (above db) (above pfx)
+      installDeps cs ghc pkg cabal db pfx
     rInst <- inDirectory distPkg
-      $ installPackage ghc pkg (above db) (above pfx)
+      $ installPackage ghc pkg db pfx
     rTest <- inDirectory distPkg $ testPackage test
     return $ InstallAndTestResult date ghcVer pkgVer cblVer
       rSetup rDistDeps rDistPkg
@@ -373,7 +373,7 @@ minimumVersionsReport
   -> InstallAndTestResult
   -> BS8.ByteString
 minimumVersionsReport = versionsReport
-  "These are the minimum versions given in the .cabal file."
+  "These are the minimum versions given in the .cabal file.\n"
 
 writeMinimumVersionsReport :: BS8.ByteString -> IO ()
 writeMinimumVersionsReport = BS8.writeFile "minimum-versions.txt"

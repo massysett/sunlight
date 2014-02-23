@@ -71,8 +71,12 @@ Also, see the Haddocks on the Test.Sunlight module.
 ## Disclaimer
 
 sunlight works, but I'm not sure it is a good solution to the
-problem of managing bounds and dependencies in a Cabal file.  It
-works on simple Cabal files but I have not tested it on any
+problem of managing bounds and dependencies in a Cabal file.  In
+particular, it might be a better long-term idea to change
+cabal-install so that it can fetch the lowest versions rather than
+the most recent ones.
+
+sunlight works on simple Cabal files but I have not tested it on any
 exotic files.
 
 ## See also

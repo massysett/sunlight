@@ -43,7 +43,7 @@ makeProcess
 makeProcess c as = do
   d <- getCurrentDirectory
   putStrLn $ "current directory is: " ++ d
-  putStrLn $ "running: " ++ c ++ show as
+  putStrLn $ "running: " ++ c ++ " " ++ show as
   (Just hin, Just out, Just err, h) <- createProcess cp
   hClose hin
   return (out, err, h)

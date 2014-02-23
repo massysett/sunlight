@@ -223,14 +223,14 @@ installAndTest cs date ghc pkg cabal test =
     ghcVer <- tee ghc ["--version"]
     pkgVer <- tee pkg ["--version"]
     cblVer <- tee "cabal" ["--version"]
-    rSetup <- tee ghc ["--make", "-o" ++ setup]
+    rSetup <- tee ghc ["--make", "-o", setup]
     rDistDeps <- tee setup
       ["sdist", "--output-directory=" ++ distDeps ]
     rDistPkg <- tee setup
       ["sdist", "--output-directory=" ++ distPkg ]
     createDirectory db
     createDirectory pfx
-    rInit <- tee pkg ["init", "--package-db=" ++ db]
+    rInit <- tee pkg ["init", db]
     rDeps <- inDirectory distDeps $
       installDeps cs ghc pkg cabal (above db) (above pfx)
     rInst <- inDirectory distPkg

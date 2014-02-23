@@ -43,9 +43,9 @@ optional maximum bound, but there must be a minimum.
 
 For example, these are all acceptable:
 
-    bytestring ##0.9.2.1
-    bytestring ># 0.9.2.1 && < 0.10
-    bytestring ># 0.9.2.1
+    bytestring ==0.9.2.1
+    bytestring >= 0.9.2.1 && < 0.10
+    bytestring >= 0.9.2.1
 
 This is not acceptable because there is no bound at all:
 
@@ -53,7 +53,7 @@ This is not acceptable because there is no bound at all:
 
 This is not acceptable because there is no lower bound:
 
-    bytestring <# 0.10
+    bytestring <= 0.10
 
 Then you build a test executable.  An example is in the
 `sunlight-test.hs` file in the sunlight git tree.  This program
@@ -78,6 +78,9 @@ the most recent ones.
 
 sunlight works on simple Cabal files but I have not tested it on any
 exotic files.
+
+sunlight makes no effort to be compatible with any Haskell compiler
+other than GHC.
 
 ## See also
 

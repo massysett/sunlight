@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                sunlight
-version:             0.2.0.0
+version:             0.4.0.0
 synopsis:            Test Cabalized package against multiple dependency versions
 
 description:         
@@ -35,7 +35,9 @@ source-repository head
 library
   exposed-modules:
       Test.Sunlight
-    , Test.Sunlight.Shell
+
+  other-modules:
+      Test.Sunlight.Shell
 
   build-depends:
       base >=4.5.1.0 && < 5

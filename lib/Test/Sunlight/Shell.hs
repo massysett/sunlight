@@ -1,6 +1,7 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Test.Sunlight.Shell where
 
+-- | Utilities for dealing with subprocesses.
+module Test.Sunlight.Shell where
 
 import qualified Data.ByteString as BS
 import qualified Data.ByteString.Char8 as BS8
@@ -61,6 +62,7 @@ makeProcess c as = do
 bufsize :: Int
 bufsize = 512
 
+-- | The result of running a command.
 data CmdResult = CmdResult
   { crCode :: ExitCode
   , crStdOut :: BS.ByteString
@@ -69,6 +71,9 @@ data CmdResult = CmdResult
   , crArgs :: [String]
   } deriving Show
 
+-- | Show something as a human-readable ByteString.  Since the
+-- programs we'll be most interested in are outputting nothing but
+-- ASCII, it's acceptable to just deal with Char8 bytestrings here.
 class ShowBS a where
   showBS :: a -> BS.ByteString
 
@@ -94,11 +99,7 @@ instance ShowBS UTCTime where
   showBS = BS8.pack . show
 
 
-resultOk :: CmdResult -> Bool
-resultOk c = case crCode c of
-  ExitSuccess -> True
-  _ -> False
-
+-- | Things that can be checked to see if they passed or failed.
 class CheckOk a where
   isOk :: a -> Bool
 

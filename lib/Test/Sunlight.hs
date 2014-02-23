@@ -1,5 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
-module Test.Sunlight where
+module Test.Sunlight
+  ( Description
+  , Compiler
+  , GhcPkg
+  , Cabal
+  , TestInputs(..)
+  , runTests
+  ) where
 
 import Distribution.Package
 import Distribution.Text

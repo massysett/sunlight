@@ -1,9 +1,9 @@
-= sunlight
+# sunlight
 
 sunlight helps you test your Cabalized package against multiple
 dependency versions.
 
-== Why?
+## Why?
 
 I wrote sunlight because of minor quibbles I have with the Haskell
 [Package Versioning
@@ -34,7 +34,7 @@ different dependencies or compiler versions.  This also makes it
 easier to maintain a package that builds with older GHC versions
 that you may not use regularly.
 
-== Usage
+## Usage
 
 To use sunlight, you need to specify a minimum bound for each
 dependency.  That minimum bound must be resolvable to an actual
@@ -43,9 +43,9 @@ optional maximum bound, but there must be a minimum.
 
 For example, these are all acceptable:
 
-    bytestring ==0.9.2.1
-    bytestring >= 0.9.2.1 && < 0.10
-    bytestring >= 0.9.2.1
+    bytestring ##0.9.2.1
+    bytestring ># 0.9.2.1 && < 0.10
+    bytestring ># 0.9.2.1
 
 This is not acceptable because there is no bound at all:
 
@@ -53,7 +53,7 @@ This is not acceptable because there is no bound at all:
 
 This is not acceptable because there is no lower bound:
 
-    bytestring <= 0.10
+    bytestring <# 0.10
 
 Then you build a test executable.  An example is in the
 `sunlight-test.hs` file in the sunlight git tree.  This program
@@ -68,25 +68,25 @@ versions.
 
 Also, see the Haddocks on the Test.Sunlight module.
 
-== Disclaimer
+## Disclaimer
 
 sunlight works, but I'm not sure it is a good solution to the
 problem of managing bounds and dependencies in a Cabal file.  It
 works on simple Cabal files but I have not tested it on any
 exotic files.
 
-== See also
+## See also
 
 cabal-bounds - program to automatically manage the bounds and
 versions in a Cabal file.
 [Github](https://github.com/dan-t/cabal-bounds)
 [Hackage](http://hackage.haskell.org/package/cabal-bounds)
 
-== License
+## License
 
 sunlight is licensed under the BSD license.
 
-== Why the name?
+## Why the name?
 
 The word "cabal" has shadowy connotations.  This package helps
 ensure your cabal is doing what you say it is doing...so it helps

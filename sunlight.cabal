@@ -32,10 +32,11 @@ library
     , bytestring >= 0.10.0.2
     , Cabal
     , process >= 1.1.0.1
-    , temporary >= 1.2.0.1
     , tuple >= 0.2.0.1
     , time >= 1.4.0.1
     , old-locale >= 1.0.0.5
+    , random >= 1.0.0.0
+
   hs-source-dirs:      lib
   ghc-options: -Wall -threaded
   default-language:    Haskell2010

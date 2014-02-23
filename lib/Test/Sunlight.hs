@@ -5,8 +5,10 @@ import Distribution.Package
 import Distribution.Text
 import Test.Sunlight.Shell
 import System.Directory
-import System.IO.Temp
 import Distribution.PackageDescription
+import Distribution.PackageDescription.Parse
+import Distribution.Simple.Utils
+import Distribution.Verbosity
 import Distribution.Version
 import Data.Tuple.Select
 import qualified Data.ByteString.Char8 as BS8
@@ -14,6 +16,9 @@ import Data.Monoid
 import Data.Time
 import System.Locale (defaultTimeLocale)
 import Data.List (intersperse)
+import System.Random
+import Control.Monad
+import System.Exit
 
 
 -- | Result from installing the package's dependencies.
@@ -197,6 +202,7 @@ instance CheckOk InstallAndTestResult where
 installAndTest
   :: [PackageIdentifier]
   -- ^ Constraints
+  -> UTCTime
   -> FilePath
   -- ^ Path to compiler
   -> FilePath
@@ -206,15 +212,14 @@ installAndTest
   -> [(String, [String])]
   -- ^ How to test the package
   -> IO InstallAndTestResult
-installAndTest cs ghc pkg cabal test =
-  withTempDirectory "." "sunlight" $ \dir -> do
+installAndTest cs date ghc pkg cabal test =
+  withTempDirectory verbose "." "sunlight" $ \dir -> do
     let setup = dir ++ "/Setup"
         distDeps = dir ++ "/distDeps"
         distPkg = dir ++ "/distPkg"
         db = dir ++ "/db"
         pfx = dir ++ "/prefix"
         above = ("../" ++)
-    date <- getCurrentTime
     ghcVer <- tee ghc ["--version"]
     pkgVer <- tee pkg ["--version"]
     cblVer <- tee "cabal" ["--version"]
@@ -277,7 +282,8 @@ lowestVersion d@(Dependency n r) = case asVersionIntervals r of
     | otherwise -> Right $ PackageIdentifier n v
 
 testLowestVersions
-  :: FilePath
+  :: UTCTime
+  -> FilePath
   -- ^ Path to compiler
   -> FilePath
   -- ^ Path to ghc-pkg
@@ -287,12 +293,13 @@ testLowestVersions
   -- ^ How to test the package
   -> GenericPackageDescription
   -> Either Dependency (IO InstallAndTestResult)
-testLowestVersions ghc pkg cabal test d = case lowestVersions d of
+testLowestVersions date ghc pkg cabal test d = case lowestVersions d of
   Left e -> Left e
-  Right ps -> Right $ installAndTest ps ghc pkg cabal test
+  Right ps -> Right $ installAndTest ps date ghc pkg cabal test
 
 testDefaultVersions
-  :: FilePath
+  :: UTCTime
+  -> FilePath
   -- ^ Path to compiler
   -> FilePath
   -- ^ Path to ghc-pkg
@@ -301,12 +308,13 @@ testDefaultVersions
   -> [(String, [String])]
   -- ^ How to test the package
   -> IO InstallAndTestResult
-testDefaultVersions ghc pkg cabal test =
-  installAndTest [] ghc pkg cabal test
+testDefaultVersions date ghc pkg cabal test =
+  installAndTest [] date ghc pkg cabal test
 
 
 testMultipleVersions
-  :: (FilePath, FilePath)
+  :: UTCTime
+  -> (FilePath, FilePath)
   -- ^ Compiler and ghc-pkg to use when testing lowest version
   -> [(FilePath, FilePath)]
   -- ^ Compilers and ghc-pkg to use to test default versions
@@ -317,12 +325,12 @@ testMultipleVersions
   -> GenericPackageDescription
   -> Either Dependency
             (IO (InstallAndTestResult, [InstallAndTestResult]))
-testMultipleVersions (lowestGhc, lowestPkg) rest cabal test pd =
-  case testLowestVersions lowestGhc lowestPkg cabal test pd of
+testMultipleVersions date (lowestGhc, lowestPkg) rest cabal test pd =
+  case testLowestVersions date lowestGhc lowestPkg cabal test pd of
     Left d -> Left d
     Right g -> Right $ do
       r1 <- g
-      let testRest (c, p) = testDefaultVersions c p cabal test
+      let testRest (c, p) = testDefaultVersions date c p cabal test
       rs <- mapM testRest rest
       return (r1, rs)
 
@@ -338,6 +346,53 @@ testMultipleVersions (lowestGhc, lowestPkg) rest cabal test pd =
 --            - lowest-7.4.2-passed.txt
 --            - current-7.4.2-passed.txt
 --            - current-7.6.1-passed.txt
+
+versionsReport
+  :: BS8.ByteString
+  -- ^ Description of dependencies
+  -> Compiler
+  -> Description
+  -> UTCTime
+  -> InstallAndTestResult
+  -> BS8.ByteString
+versionsReport desc c d t r = BS8.concat
+  [ "This package was tested to work with these dependency\n"
+  , "versions and compiler version.\n"
+  , desc
+  , "Tested as of: " <> (BS8.pack . show $ t) <> "\n"
+  , "Path to compiler: " <> BS8.pack c <> "\n"
+  , "Compiler description: " <> BS8.pack d <> "\n"
+  , "\n"
+  ] <>
+  (crStdOut . piGhcPkg . itPackage $ r)
+
+minimumVersionsReport
+  :: Compiler
+  -> Description
+  -> UTCTime
+  -> InstallAndTestResult
+  -> BS8.ByteString
+minimumVersionsReport = versionsReport
+  "These are the minimum versions given in the .cabal file."
+
+writeMinimumVersionsReport :: BS8.ByteString -> IO ()
+writeMinimumVersionsReport = BS8.writeFile "minimum-versions.txt"
+
+currentVersionsReport
+  :: UTCTime
+  -> [(Description, Compiler, a)]
+  -> [InstallAndTestResult]
+  -> Maybe BS8.ByteString
+currentVersionsReport t ds ts
+  | null ds || null ts = Nothing
+  | otherwise = Just $ versionsReport dep comp desc t r
+  where
+    dep = "These are the default versions fetched by cabal install.\n"
+    (desc, comp, _) = last ds
+    r = last ts
+
+writeCurrentVersionsReport :: BS8.ByteString -> IO ()
+writeCurrentVersionsReport = BS8.writeFile "current-versions.txt"
 
 
 instance ShowBS InstallResult where
@@ -365,6 +420,12 @@ instance ShowBS InstallAndTestResult where
     <> showBS (itDeps i)
     <> showBS (itPackage i)
     <> (BS8.concat . map showBS . itTest $ i)
+
+-- | Gets four-character random string.
+randomString :: IO String
+randomString =
+  fmap (map toEnum)
+  $ replicateM 4 (getStdRandom (randomR (fromEnum 'a', fromEnum 'z')))
 
 makeResultFile
   :: UTCTime
@@ -469,3 +530,35 @@ data TestInputs = TestInputs
   --
   -- > [("git", ["rev-parse", "HEAD"])]
   } deriving Show
+
+runTests :: TestInputs -> IO ()
+runTests i = do
+  desc <- case tiDescription i of
+    Just pd -> return pd
+    Nothing -> do
+      path <- defaultPackageDesc verbose
+      readPackageDescription verbose path
+  date <- getCurrentTime
+  randStr <- randomString
+  let last2 (_, b, c) = (b, c)
+      eiRes = testMultipleVersions date
+        (last2 . tiLowest $ i) (map last2 . tiDefault $ i)
+        (tiCabal i) (tiTest i) desc
+  (r1, rs) <- case eiRes of
+    Left e -> dependencyError e
+    Right g -> g
+  makeResultFile date randStr "lowest" (sel1 . tiLowest $ i) r1
+  let makeRest r (d, _, _) = makeResultFile date randStr "current" d r
+  _ <- zipWithM makeRest rs (tiDefault i)
+  when (not $ isOk r1 && all isOk rs) exitFailure
+  writeMinimumVersionsReport $ minimumVersionsReport
+    (sel2 . tiLowest $ i) (sel1 . tiLowest $ i) date r1
+  maybe (return ()) writeCurrentVersionsReport $ currentVersionsReport
+    date (tiDefault i) rs
+  exitSuccess
+
+dependencyError :: Dependency -> IO a
+dependencyError d = putStrLn s >> exitFailure
+  where
+    s = "dependency invalid: " ++ show d ++ " sunlight requires "
+      ++ "that you specify a fixed lower bound for each dependency."

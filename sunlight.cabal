@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                sunlight
-version:             0.4.0.0
+version:             0.4.0.1
 synopsis:            Test Cabalized package against multiple dependency versions
 
 description:         

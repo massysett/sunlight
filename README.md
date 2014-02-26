@@ -89,6 +89,13 @@ versions in a Cabal file.
 [Github](https://github.com/dan-t/cabal-bounds)
 [Hackage](http://hackage.haskell.org/package/cabal-bounds)
 
+cabal-constraints - Repeatable builds for cabalized Haskell projects
+[Github](https://github.com/benarmston/cabal-constraints)
+[Hackage](http://hackage.haskell.org/package/cabal-constraints)
+
+cabal-freeze - hopefully will appear in `cabal` soon.
+[Github ticket](https://github.com/haskell/cabal/pull/1519)
+
 ## License
 
 sunlight is licensed under the BSD license.

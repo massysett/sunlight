@@ -57,7 +57,8 @@ makeProcess c as = do
                        , std_out = CreatePipe
                        , std_err = CreatePipe
                        , close_fds = True
-                       , create_group = False }
+                       , create_group = False
+                       , delegate_ctlc = True }
 
 bufsize :: Int
 bufsize = 512

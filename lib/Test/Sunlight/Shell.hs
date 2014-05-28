@@ -50,15 +50,10 @@ makeProcess c as = do
   hClose hin
   return (out, err, h)
   where
-    cp = CreateProcess { cmdspec = RawCommand c as
-                       , cwd = Nothing
-                       , env = Nothing
-                       , std_in = CreatePipe
-                       , std_out = CreatePipe
-                       , std_err = CreatePipe
-                       , close_fds = True
-                       , create_group = False
-                       , delegate_ctlc = True }
+    cp = (proc c as) { std_in = CreatePipe
+                     , std_out = CreatePipe
+                     , std_err = CreatePipe
+                     , close_fds = True }
 
 bufsize :: Int
 bufsize = 512

@@ -7,12 +7,13 @@ module Main where
 
 import Test.Sunlight
 
+ghc s = (s, "ghc-" ++ s, "ghc-pkg-" ++ s)
+
 inputs = TestInputs
   { tiDescription = Nothing
   , tiCabal = "cabal"
-  , tiLowest = ("7.4", "ghc-7.4", "ghc-pkg-7.4")
-  , tiDefault = [ ("7.4", "ghc-7.4", "ghc-pkg-7.4")
-                , ("7.6", "ghc-7.6", "ghc-pkg-7.6") ]
+  , tiLowest = ghc "7.4.1"
+  , tiDefault = map ghc ["7.4.1", "7.6.3", "7.8.2"]
   , tiTest = []
   }
 

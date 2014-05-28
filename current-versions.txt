@@ -1,40 +1,41 @@
 This package was tested to work with these dependency
 versions and compiler version.
 These are the default versions fetched by cabal install.
-Tested as of: 2014-02-23 23:07:11.623243 UTC
-Path to compiler: ghc-7.6
-Compiler description: 7.6
+Tested as of: 2014-05-28 00:39:08.611646 UTC
+Path to compiler: ghc-7.8.2
+Compiler description: 7.8.2
 
-/opt/ghc-7.6.3/lib/ghc-7.6.3/package.conf.d:
-    Cabal-1.16.0
-    array-0.4.0.1
-    base-4.6.0.1
+/opt/ghc/7.8.2/lib/ghc-7.8.2/package.conf.d:
+    Cabal-1.18.1.3
+    array-0.5.0.0
+    base-4.7.0.0
     bin-package-db-0.0.0.0
-    binary-0.5.1.1
-    bytestring-0.10.0.2
-    containers-0.5.0.0
-    deepseq-1.3.0.1
-    directory-1.2.0.1
-    filepath-1.3.0.1
-    (ghc-7.6.3)
-    ghc-prim-0.3.0.0
-    (haskell2010-1.1.1.0)
-    (haskell98-2.0.0.2)
-    hoopl-3.9.0.0
-    hpc-0.6.0.0
-    integer-gmp-0.5.0.0
-    old-locale-1.0.0.5
-    old-time-1.1.0.1
-    pretty-1.1.1.0
-    process-1.1.0.2
+    binary-0.7.1.0
     rts-1.0
-    template-haskell-2.8.0.0
-    time-1.4.0.1
-    unix-2.6.0.1
+    bytestring-0.10.4.0
+    containers-0.5.5.1
+    deepseq-1.3.0.2
+    directory-1.2.1.0
+    filepath-1.3.0.2
+    (ghc-7.8.2)
+    ghc-prim-0.3.1.0
+    (haskell2010-1.1.2.0)
+    (haskell98-2.0.0.3)
+    hoopl-3.10.0.1
+    hpc-0.6.0.1
+    integer-gmp-0.5.1.0
+    old-locale-1.0.0.6
+    old-time-1.1.0.2
+    pretty-1.1.1.1
+    process-1.2.0.0
+    template-haskell-2.9.0.0
+    time-1.4.2
+    transformers-0.3.0.0
+    unix-2.7.0.1
 
-/home/massysett/sunlight/sunlight-3857/db:
+/home/massysett/sunlight/sunlight-20539/db:
     OneTuple-0.2.1
     random-1.0.1.1
-    sunlight-0.2.0.0
+    sunlight-0.6.0.0
     tuple-0.2.0.1
 
